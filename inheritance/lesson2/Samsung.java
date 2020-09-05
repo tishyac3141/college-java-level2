@@ -3,15 +3,13 @@ package inheritance.lesson2;
 public class Samsung implements Phone {
 
     @Override
-    public void call() {
-        System.out.println("Call Samsung");
+    public void call(Person person) {
+        System.out.println("Call Samsung number " + person.getNumber());
 
     }
 
     @Override
     public void text() {
-        // TODO Auto-generated method stub
-
     }
 
     @Override

@@ -14,6 +14,7 @@ public class Person {
     private String name;
     private String phoneNumber;
 
+    //constructor
     public Person(String newName, String newNumber) {
         name = newName;
         phoneNumber = newNumber;

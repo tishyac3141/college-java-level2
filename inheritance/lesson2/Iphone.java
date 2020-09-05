@@ -4,7 +4,7 @@ public class Iphone implements Phone {
 
     @Override
     public void call(Person person) {
-        System.out.println("Call Iphone " + person.getNumber());
+        System.out.println("Call Iphone number " + person.getNumber());
 
     }
 

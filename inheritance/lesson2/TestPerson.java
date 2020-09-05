@@ -1,14 +1,13 @@
 package inheritance.lesson2;
 
 /**
- * Author: Tishya Chhabra 
+ * @author: Tishya Chhabra 
  * Date: September 4, 2020
  * Class Info: A class that tests the functionality of the 'Person' class, specifically
  * the toString() method.
  */
 
 public class TestPerson {
-
     public static void main(String[] args) {
      
         //create an arry of Person objects and populate it

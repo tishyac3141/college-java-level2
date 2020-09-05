@@ -3,15 +3,13 @@ package inheritance.lesson2;
 public class Iphone implements Phone {
 
     @Override
-    public void call() {
-        System.out.println("Call Iphone");
+    public void call(Person person) {
+        System.out.println("Call Iphone " + person.getNumber());
 
     }
 
     @Override
     public void text() {
-        // TODO Auto-generated method stub
-
     }
 
     @Override

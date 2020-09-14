@@ -33,9 +33,9 @@ public class Calculator {
         if(denominator == 0){
             throw new ZeroInputError();
         } else{
-            JOptionPane.showMessageDialog(null, "Your answer is: " + (numerator/denominator));
+            JOptionPane.showMessageDialog(null, "Your final answer is: " + (numerator/denominator));
         }
-    }
+    }     
 
     public static void main(String[] args){
         Calculator calculator = new Calculator();

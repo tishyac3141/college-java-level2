@@ -1,4 +1,4 @@
-package exceptions.lesson3;
+package lesson3;
 
 import javax.swing.JOptionPane;
 

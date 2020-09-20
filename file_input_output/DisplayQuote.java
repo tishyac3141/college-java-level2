@@ -8,7 +8,8 @@ public class DisplayQuote
    {	
       try {
          //specify which file to use
-         File text = new File("Quote.txt");
+         String pathname = "/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/Quote.txt";
+         File text = new File(pathname);
          //open the file							
          FileInputStream in = new FileInputStream(text);			
          	

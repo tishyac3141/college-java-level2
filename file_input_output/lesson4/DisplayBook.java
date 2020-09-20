@@ -10,6 +10,8 @@ import java.util.*;
  * title in it, then it takes that file and outputs the contents of that file for the user to see.
  * If the file does not exist, then it prompts the user to input their favorite book titile
  * and saves it in a simple text file.
+ * 
+ * I did not include a Book text file on purpose to test both functionalities.
  */
 
 public class DisplayBook {

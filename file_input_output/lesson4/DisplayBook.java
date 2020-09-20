@@ -16,7 +16,10 @@ public class DisplayBook {
 
     public static void main(String[] args){
 
-        String pathname = "/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/Boox.txt";
+        //this is the path that worked for me specifically; the generic one would not work for me
+        //String pathname = "/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/Boox.txt";
+        
+        String pathname = "Book.txt";
         File bookFile = new File(pathname);
 
         //encompassed in a try-catch block so that if the file does not exist, it will
@@ -37,7 +40,11 @@ public class DisplayBook {
 
             //also encompassed in a try-catch block in case something goes wrong
             try{
-                File newBookFile = new File("/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/newBookFile.txt");
+                
+                //this is the path that worked for me specifically (so that it was in the lesson4 folder)
+                //File newBookFile = new File("/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/newBookFile.txt");
+                
+                File newBookFile = new File("newBookFile.txt");
                 FileOutputStream outStream = new FileOutputStream(newBookFile);
 
                 //need a new Scanner to take user input for their favorite book title

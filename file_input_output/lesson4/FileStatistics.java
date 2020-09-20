@@ -13,7 +13,14 @@ import java.io.File;
 public class FileStatistics {
     
     public static void main(String[] args){
-        String pathName = "/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/RandomFile.txt";
+        
+        //this is the path that works for me; the generic one does not work for me for some reason 
+        //String pathName = "/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/RandomFile.txt";
+        
+        //String javahome = System.getenv("JAVA_HOME");
+        //String path = System.getenv("PATH");
+
+        String pathName = "RandomFile.txt";
         File myFile = new File(pathName);
 
         if(myFile.exists()){

@@ -15,7 +15,7 @@ public class FileStatistics2 {
 
     public static void main(String[] args){
         
-        //these are the path names that worked for me specifically; the generic one would not work for me
+        //these are the path names that worked for me specifically; the generic one would not work for me...
         //String pathName1 = "/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/Quote.txt";
         //String pathName2 = "/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/Quote.doc";
         

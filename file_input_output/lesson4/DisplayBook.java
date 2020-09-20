@@ -16,7 +16,7 @@ public class DisplayBook {
 
     public static void main(String[] args){
 
-        //this is the path that worked for me specifically; the generic one would not work for me
+        //this is the path that worked for me specifically; the generic one would not work for me...
         //String pathname = "/Users/tishya/Documents/Programming/GitHub/college-java-level2/file_input_output/lesson4/Boox.txt";
         
         String pathname = "Book.txt";

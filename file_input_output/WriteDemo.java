@@ -7,29 +7,27 @@
    {
       public static void main(String[] args)
       {
-      // In this exercise, the program will ask you for your
-      // favorite quote and will write it to a text file.
       
          try
          {
-            File myFile = new File("MyQuote.txt");							// The file to write it to.
-            FileOutputStream out = new FileOutputStream(myFile);		// Open the file for writing.
+            //the file to write it to
+            File myFile = new File("MyQuote.txt");
+            //open the file for writing							
+            FileOutputStream out = new FileOutputStream(myFile);		
          
             System.out.print("Enter your favorite quote: "); 
-            Scanner input = new Scanner(System.in);
-            String answer = input.nextLine();
+            Scanner scanner = new Scanner(System.in);
+            String answer = scanner.nextLine();
          
-         // Now, let's send this quote to the file,
-         // character-by-character via the FileOutputStream.
+            //now, let's send this quote to the file, character-by-character via the FileOutputStream.
          
-            for (int x=0; x < answer.length(); ++x)
+            for (int x = 0; x < answer.length(); ++x){
                out.write(answer.charAt(x));
+            }
                
             out.close();
+         } catch (IOException exc) {
+            System.out.println(exc.getMessage());
          }
-            catch (IOException exc)
-            {
-               System.out.println(exc.getMessage());
-            }
       }
    }

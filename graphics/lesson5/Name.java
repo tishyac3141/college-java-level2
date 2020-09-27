@@ -16,7 +16,7 @@ public class Name extends JFrame implements ActionListener{
         setSize(680, 420);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
-        setLayout(new FlowLayout());
+        setLayout(new GridBagLayout());
         
         button.setToolTipText("Click to get a new name!");
         button.addActionListener(this);
@@ -26,7 +26,7 @@ public class Name extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        if(counter == 4){
+        if(counter == listOfNames.length - 1){
             counter = 0;
         } else {
             counter++;

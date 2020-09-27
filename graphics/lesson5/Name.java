@@ -4,6 +4,13 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+/**
+ * @author: Tishya Chhabra 
+ * Date: September 26 2020
+ * Class Info: A class that allows the user to click on a button, and each 
+ * time they click on the button, it displays a different name.
+ */
+
 public class Name extends JFrame implements ActionListener{
 
     String[] listOfNames = { "Bob", "Sally", "Mike", "Alice", "Tom" };

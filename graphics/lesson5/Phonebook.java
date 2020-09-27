@@ -2,7 +2,14 @@ package graphics.lesson5;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.*; 
+
+/**
+ * @author: Tishya Chhabra 
+ * Date: September 26 2020
+ * Class Info: A class that allows the user to choose, from a dropdown, a 
+ * person, and the program will display their phone number.
+ */
 
 public class Phonebook extends JFrame implements ActionListener {
 

@@ -4,6 +4,17 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
+/**
+ * @author: Tishya Chhabra 
+ * Date: September 26 2020
+ * Class Info: A class that allows the user to order some food. It uses Java Swing
+ * Components, like JFrame, JButton, JCheckBox, and Button Group, to display
+ * the various options of ordering a burger, double burger, some additional 
+ * items for the burger, as well as a small, medium, or large soda. Once the user
+ * makes a selection and clicks 'Done', the program will output how much the final
+ * cost is.
+ */
+
 public class BobBurger extends JFrame implements ItemListener, ActionListener {
 
     double cost = 0;

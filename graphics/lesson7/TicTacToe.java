@@ -149,7 +149,6 @@ public class TicTacToe extends JFrame implements MouseListener {
     }
 
     //these next set of methods are required to be implemented in order to be a MouseListener
-
     public void mousePressed(MouseEvent e) { }
     public void mouseReleased(MouseEvent e) { }
     public void mouseEntered(MouseEvent e) { }

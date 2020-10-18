@@ -10,7 +10,7 @@ public class Triangle extends JPanel implements ActionListener{
     boolean isFlipped = false;
 
     public Triangle(){
-        setSize(680, 680);        
+        setSize(500, 500);        
 
         add(flip);
         flip.addActionListener(this);
@@ -22,9 +22,9 @@ public class Triangle extends JPanel implements ActionListener{
         super.paintComponent(g);
 
         if(isFlipped){
-            g.drawPolygon(new int[] {460, 220, 340}, new int[] {200, 200, 400}, 3);
+            g.drawPolygon(new int[] {350, 150, 250}, new int[] {200, 200, 400}, 3);
         } else {
-            g.drawPolygon(new int[] {340, 220, 460}, new int[] {200, 400, 400}, 3);
+            g.drawPolygon(new int[] {250, 150, 350}, new int[] {200, 400, 400}, 3);
         }
     }
 
@@ -35,7 +35,7 @@ public class Triangle extends JPanel implements ActionListener{
 
     public static void main(String[] args){
         JFrame frame = new JFrame();
-        frame.setSize(680, 680);
+        frame.setSize(500, 500);
         Triangle triangle = new Triangle();
         frame.add(triangle);
         frame.setVisible(true);

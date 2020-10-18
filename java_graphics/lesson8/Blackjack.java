@@ -14,8 +14,11 @@ public class Blackjack extends JPanel implements ActionListener {
     private int index;
     
     private JButton hit = new JButton("Hit");
+    private boolean newCard = false;
     private JButton stay = new JButton("Stay");
+    private boolean gameOver = false;
     private JButton reset = new JButton("Reset");
+    private boolean resetting = false;
 
     private int width = 680;
     private int count = 2;
@@ -35,8 +38,12 @@ public class Blackjack extends JPanel implements ActionListener {
             cards[i + 48] = 11;
         }
 
+        for(int i = 0; i < whichCard.length; i++){
+            whichCard[i] = false;
+        }
 
         setLayout(new BorderLayout());
+        setSize(680, 680);
         add(hit, BorderLayout.PAGE_END);
         add(stay, BorderLayout.PAGE_END);
         add(reset, BorderLayout.PAGE_END);
@@ -45,14 +52,45 @@ public class Blackjack extends JPanel implements ActionListener {
         hit.addActionListener(this);
         reset.addActionListener(this);
 
+        repaint();
+
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+
+        if(resetting){
+
+        } 
+        else if(gameOver){
+
+        } 
+        else if(newCard){
+            
+        }
     }
 
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(hit)){ 
+            newCard = true;
+            gameOver = false;
+            resetting = false;
+        } 
+        else if(e.getSource().equals(stay)){
+            gameOver = true;
+            newCard = false;
+            resetting = false;
+        }
+        else{
+            for(int i = 0; i < whichCard.length; i++){
+                whichCard[i] = false;
+            }
+            resetting = true;
+            newCard = false;
+            gameOver = false;
+        }
 
+        repaint();
     }
 
     public static void main(String[] args){

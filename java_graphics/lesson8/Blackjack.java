@@ -1,27 +1,35 @@
 package java_graphics.lesson8;
 
 import javax.swing.*;
-
-import java_graphics.lesson6.BorderLocation;
-
 import java.awt.*;
 import java.awt.event.*;
 
-public class Blackjack extends JPanel implements ActionListener {
+/**
+ * @author Tishya Chhabra
+ * Date: 10/17/2020
+ */
+
+public class Blackjack extends JFrame implements ActionListener {
     
     private int cards[] = new int[52];
     private boolean whichCard[] = new boolean[52];
-    private int index;
+    private int count = 0;
     
-    private JButton hit = new JButton("Hit");
-    private boolean newCard = false;
-    private JButton stay = new JButton("Stay");
-    private boolean gameOver = false;
-    private JButton reset = new JButton("Reset");
-    private boolean resetting = false;
+    private int[] userValues = new int[26];
+    private int userCount = 0;
+    private int userIndex = 0;
+    
+    private int[] computerValues = new int[26];
+    private int computerCount = 0;
+    private int computerIndex = 0;
 
-    private int width = 680;
-    private int count = 2;
+    private JButton hit = new JButton("Hit");
+    private JButton stay = new JButton("Stay");
+    private JButton reset = new JButton("Reset");
+
+    private DrawingCards canvas = new DrawingCards();
+
+    private int index; 
 
     public Blackjack(){
         for(int i = 0; i < 9; i++){
@@ -44,57 +52,107 @@ public class Blackjack extends JPanel implements ActionListener {
 
         setLayout(new BorderLayout());
         setSize(680, 680);
-        add(hit, BorderLayout.PAGE_END);
-        add(stay, BorderLayout.PAGE_END);
-        add(reset, BorderLayout.PAGE_END);
+        add(hit, BorderLayout.SOUTH);
+        add(stay, BorderLayout.SOUTH);
+        add(reset, BorderLayout.SOUTH);
+        add(canvas, BorderLayout.CENTER);
 
         stay.addActionListener(this);
         hit.addActionListener(this);
         reset.addActionListener(this);
 
-        repaint();
 
-    }
+        for(int i = 0; i < 4; i++){
+            index = (int)(Math.random() * 52);
 
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-
-        if(resetting){
-
-        } 
-        else if(gameOver){
-
-        } 
-        else if(newCard){
-            
+            if(i < 2){
+                while(!whichCard[index]){
+                    index = (int)(Math.random() * 52);
+                }
+                userValues[userIndex] = cards[index];
+                whichCard[index] = true;
+                canvas.addCard(userValues[userIndex]);
+                userCount += userValues[userIndex];
+                userIndex++;
+            } else {
+                while(!whichCard[index]){
+                    index = (int)(Math.random() * 52);
+                }
+                computerValues[computerIndex] = cards[index];
+                whichCard[index] = true;
+                computerCount += computerValues[computerIndex];
+                computerIndex++;
+            }
+           
         }
+
+        count += 4;
+
     }
+
 
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(hit)){ 
-            newCard = true;
-            gameOver = false;
-            resetting = false;
+            if(count == 52){
+                JOptionPane.showMessageDialog(null, "The deck has no more cards! Game over! Click 'stay' to reset.");
+            }
+
+            while(!whichCard[index] && count < 52){
+                index = (int)(Math.random() * 52);
+            }
+            userValues[userIndex] = cards[index];
+            whichCard[index] = true;
+            canvas.addCard(userValues[userIndex]);
+            userCount += userValues[userIndex];
+            userIndex++;
+
+            if(computerCount < 21){
+                while(!whichCard[index] && count < 52){
+                    index = (int)(Math.random() * 52);
+                }
+                computerValues[computerIndex] = cards[index];
+                whichCard[index] = true;
+                computerCount += computerValues[computerIndex];
+                computerIndex++;
+            }
+            
+            
         } 
+
         else if(e.getSource().equals(stay)){
-            gameOver = true;
-            newCard = false;
-            resetting = false;
+
+            if(computerCount == 21 && userCount == 21){
+                JOptionPane.showMessageDialog(null, "It's a tie!");;
+            }
+            else if(computerCount == 21){
+                JOptionPane.showMessageDialog(null, "You lost!");
+            }
+            else if(userCount == 21){
+                JOptionPane.showMessageDialog(null, "You win!");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Nobody won this round.");
+            }
         }
+
         else{
             for(int i = 0; i < whichCard.length; i++){
                 whichCard[i] = false;
             }
-            resetting = true;
-            newCard = false;
-            gameOver = false;
+            for(int i = 0; i < userValues.length; i++){
+                userValues[i] = 0;
+            }
+            for(int i = 0; i < computerValues.length; i++){
+                computerValues[i] = 0;
+            }
+            userCount = 0;
+            computerCount = 0;
+            canvas.reset();
         }
-
-        repaint();
     }
 
     public static void main(String[] args){
         Blackjack blackjack = new Blackjack();
+        blackjack.setVisible(true);
     }
-
 }

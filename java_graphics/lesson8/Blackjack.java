@@ -5,153 +5,88 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * @author Tishya Chhabra
+ * @author Tishya Chhabra 
  * Date: 10/17/2020
+ * 
  */
 
 public class Blackjack extends JFrame implements ActionListener {
-    
-    private int cards[] = new int[52];
-    private boolean whichCard[] = new boolean[52];
-    private int count = 0;
-    
-    private int[] userValues = new int[26];
-    private int userCount = 0;
-    private int userIndex = 0;
-    
-    private int[] computerValues = new int[26];
-    private int computerCount = 0;
-    private int computerIndex = 0;
 
+    BlackjackLogic logic = new BlackjackLogic();
+
+    private JPanel buttons = new JPanel();
     private JButton hit = new JButton("Hit");
     private JButton stay = new JButton("Stay");
     private JButton reset = new JButton("Reset");
 
     private DrawingCards canvas = new DrawingCards();
+    private Container cont = getContentPane();
 
-    private int index; 
+    private int index;
 
-    public Blackjack(){
-        for(int i = 0; i < 9; i++){
-            cards[i] = i + 2;
-            cards[i + 9] = i + 2;
-            cards[i + 18] = i + 2;
-            cards[i + 27] = i + 2;
-        }
+    public Blackjack() {
 
-        for(int i = 0; i < 4; i++){
-            cards[i + 36] = 10;
-            cards[i + 40] = 10;
-            cards[i + 44] = 10;
-            cards[i + 48] = 11;
-        }
-
-        for(int i = 0; i < whichCard.length; i++){
-            whichCard[i] = false;
-        }
-
-        setLayout(new BorderLayout());
         setSize(680, 680);
-        add(hit, BorderLayout.SOUTH);
-        add(stay, BorderLayout.SOUTH);
-        add(reset, BorderLayout.SOUTH);
-        add(canvas, BorderLayout.CENTER);
+        cont.setLayout(new BorderLayout());
+
+        buttons.setLayout(new FlowLayout());
+        buttons.add(hit);
+        buttons.add(stay);
+        buttons.add(reset);
+
+        cont.add(buttons, BorderLayout.SOUTH);
+        cont.add(canvas, BorderLayout.CENTER);
 
         stay.addActionListener(this);
         hit.addActionListener(this);
         reset.addActionListener(this);
 
-
-        for(int i = 0; i < 4; i++){
-            index = (int)(Math.random() * 52);
-
-            if(i < 2){
-                while(!whichCard[index]){
-                    index = (int)(Math.random() * 52);
-                }
-                userValues[userIndex] = cards[index];
-                whichCard[index] = true;
-                canvas.addCard(userValues[userIndex]);
-                userCount += userValues[userIndex];
-                userIndex++;
-            } else {
-                while(!whichCard[index]){
-                    index = (int)(Math.random() * 52);
-                }
-                computerValues[computerIndex] = cards[index];
-                whichCard[index] = true;
-                computerCount += computerValues[computerIndex];
-                computerIndex++;
-            }
-           
+        int[] startingValues = logic.start();
+        for (int i = 0; i < startingValues.length; i++) {
+            canvas.addCard(startingValues[i]);
+            System.out.println("addCard() called with " + startingValues[i]);
         }
 
-        count += 4;
-
+        setVisible(true);
     }
-
 
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource().equals(hit)){ 
-            if(count == 52){
-                JOptionPane.showMessageDialog(null, "The deck has no more cards! Game over! Click 'stay' to reset.");
+        if (e.getSource().equals(hit)) {
+            int value = logic.hit();
+            if (value == 0) {
+                JOptionPane.showMessageDialog(null, "The deck is out of cards! Game over!");
+                logic.reset();
+                canvas.reset();
+            } else {
+                canvas.addCard(value);
             }
+            setVisible(true);
+        }
 
-            while(!whichCard[index] && count < 52){
-                index = (int)(Math.random() * 52);
-            }
-            userValues[userIndex] = cards[index];
-            whichCard[index] = true;
-            canvas.addCard(userValues[userIndex]);
-            userCount += userValues[userIndex];
-            userIndex++;
+        else if (e.getSource().equals(stay)) {
 
-            if(computerCount < 21){
-                while(!whichCard[index] && count < 52){
-                    index = (int)(Math.random() * 52);
-                }
-                computerValues[computerIndex] = cards[index];
-                whichCard[index] = true;
-                computerCount += computerValues[computerIndex];
-                computerIndex++;
-            }
-            
-            
-        } 
+            String outcome = logic.stay();
 
-        else if(e.getSource().equals(stay)){
-
-            if(computerCount == 21 && userCount == 21){
-                JOptionPane.showMessageDialog(null, "It's a tie!");;
-            }
-            else if(computerCount == 21){
-                JOptionPane.showMessageDialog(null, "You lost!");
-            }
-            else if(userCount == 21){
-                JOptionPane.showMessageDialog(null, "You win!");
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Nobody won this round.");
+            if (outcome.equals("tie")) {
+                JOptionPane.showMessageDialog(null, "It's a tie! Press 'reset' to play again.");
+            } else if (outcome.equals("computer")) {
+                JOptionPane.showMessageDialog(null, "You lost! Press 'reset' to play again.");
+            } else if (outcome.equals("user")) {
+                JOptionPane.showMessageDialog(null, "You win! Press 'reset' to play again.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Nobody won this round. Press 'reset' to play again.");
             }
         }
 
-        else{
-            for(int i = 0; i < whichCard.length; i++){
-                whichCard[i] = false;
-            }
-            for(int i = 0; i < userValues.length; i++){
-                userValues[i] = 0;
-            }
-            for(int i = 0; i < computerValues.length; i++){
-                computerValues[i] = 0;
-            }
-            userCount = 0;
-            computerCount = 0;
+        else {
+            logic.reset();
             canvas.reset();
+
+            JOptionPane.showMessageDialog(null, "Press the 'hit' button twice to get your first two cards.");
         }
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Blackjack blackjack = new Blackjack();
         blackjack.setVisible(true);
     }

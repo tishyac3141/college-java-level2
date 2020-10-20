@@ -5,42 +5,53 @@ import java.awt.*;
 
 public class DrawingCards extends JPanel {
 
-    private int value = 0;
-    private int numOfCards = 0;
-    private final int WIDTH = 680;
-    private final int HEIGHT = 340;
+    private int[] values = new int[40];
+    private int valuesIndex = 0;
 
-    private boolean reset;
-    private boolean addCard;
+    private int WIDTH = 450;
+    private int HEIGHT = 450;
 
-    public DrawingCards(){
+    private boolean reset = false;
+    private boolean addCard = true;
+
+    public DrawingCards() {
         setSize(WIDTH, HEIGHT);
+        setVisible(true);
     }
 
-    public void reset(){
+    public void reset() {
         reset = true;
         repaint();
     }
 
-    public void addCard(int value){
-        this.value = value;
+    public void addCard(int value) {
+        values[valuesIndex] = value;
+        valuesIndex++;
         addCard = true;
         repaint();
     }
 
-
-    public void paintComponent(Graphics g){
-
-        if(reset){
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (reset) {
+            for (int i = 0; i < values.length; i++) {
+                values[i] = 0;
+            }
+            valuesIndex = 0;
             reset = false;
         }
-        else if(addCard){
-            g.drawRect(WIDTH/numOfCards, HEIGHT/2, 50, 50);
-            g.drawString(Integer.toString(value), (WIDTH/numOfCards) + 50, (HEIGHT/2) + 50);
-            addCard = false;
-        }
+        if (addCard) {
+            for (int i = 0; i < valuesIndex; i++) {
+                System.out.println("values[i] = " + values[i]);
+                int xcord = WIDTH/(valuesIndex - i);
 
-        setVisible(true);
+                //g.drawRect(xcord, 10, 150, 250);
+                g.drawString(Integer.toString(values[i]), xcord, 225);
+            }
+
+            addCard = false;
+            setVisible(true);
+        }
     }
-    
+
 }

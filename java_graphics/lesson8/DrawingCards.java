@@ -7,7 +7,7 @@ import java.awt.*;
  * @author Tishya Chhabra
  * Date: 10/18/2020
  * 
- * Helper class for Blackjack; takes the values and prints them out onto the panel; 
+ * Class info: Helper class for Blackjack; takes the values and prints them out onto the panel; 
  * according to what the user presses, different things happen
  */
 

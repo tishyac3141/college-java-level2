@@ -4,6 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * @author Tishya Chhabra
+ * Date: 10/30/2020
+ * 
+ * 
+ */
+
 public class Vote extends JFrame implements ActionListener{
 
     private JButton cand1 = new JButton("Candidate 1");

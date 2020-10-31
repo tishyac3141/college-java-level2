@@ -3,7 +3,16 @@ package random_code;
 public class roundSum {
 
     public static void main(String[] args) {
-        System.out.println(roundSum(114, 115, 112));
+        //System.out.println(roundSum(114, 115, 112));
+
+        int height = 5;
+        for(int i = 0; i < height; i++){
+
+            for(int j = 0; j <= i; j++){
+                  System.out.print("*");
+            }
+            System.out.println();
+        }
     }
 
     public static int roundSum(int a, int b, int c){

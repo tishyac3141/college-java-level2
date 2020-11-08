@@ -2,8 +2,16 @@ package networking.lesson10;
 
 import java.io.*;
 import java.net.*;
-
 import javax.swing.JOptionPane;
+
+/**
+ * @author Tishya Chhabra
+ * Date: 11/7/2020
+ * 
+ * The client-side for this program! It asks the user for what state they woudl like information on, and then 
+ * takes the cost that is passed from the server and shows that to the user.
+ * Be sure to run this class after running TripServer first.
+ */
 
 public class TripClient {
 
@@ -13,7 +21,6 @@ public class TripClient {
 
     public TripClient(){
         state = JOptionPane.showInputDialog("Please type in the state you would like to travel to. Be sure to type in the abbreviated version of your state.");
-        System.out.println("after input dialog");
     }
 
     public void run() throws IOException {
@@ -21,15 +28,12 @@ public class TripClient {
 
         dOutStream = new DataOutputStream(clientSocket.getOutputStream());
         dOutStream.writeBytes(state + "\n");
-
-        System.out.println("sent state to server; state = " + state);
         
         BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        String response = input.readLine();
-        System.out.println("response = " + response);
-        int cost = Integer.parseInt(response);
         
-        System.out.println("cost = " + cost);
+        String response = input.readLine();
+        int cost = Integer.parseInt(response);
+
         if(cost == 0){
             JOptionPane.showMessageDialog(null, "We're sorry! We don't have the information for that state!");
         } else {

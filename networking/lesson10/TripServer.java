@@ -3,6 +3,16 @@ package networking.lesson10;
 import java.io.*;
 import java.net.*;
 
+/**
+ * @author Tishya Chhabra
+ * Date: 11/7/2020
+ * 
+ * Server-side for this program! It takes the state that is passed by the client, and depending on what it is,
+ * provides the cost of a round-trip to that state; if the user typed in a state that is not in the databse, then
+ * 0 is passed as the cost.
+ * When trying this program, be sure to run thiis first, then TripClient.java
+ */
+
 public class TripServer {
 
     private ServerSocket server = null;
@@ -45,19 +55,14 @@ public class TripServer {
                     clientSocket.getOutputStream(), true);
                 
                 int cost;
-
-                System.out.println("before first readLine()");
                 state = br.readLine();
-                System.out.println("state1 = " + state);
+
                 while(state != null){
-                    System.out.println("in second while loop");
                     cost = getCost(state);
-                    System.out.println("state = " + state + "  cost = " + cost);
+                    //System.out.println("state = " + state + "  cost = " + cost);
 
                     pw.println(Integer.toString(cost) + "\n");
-
                     state = br.readLine();
-                    System.out.println("state after iteration = " + state);
                 }
                 
             } catch (IOException ex) {

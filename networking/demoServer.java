@@ -30,9 +30,11 @@ public class demoServer {
                 // Open a socket to handle clients requests
                 clientSocket = server.accept();
                 // Buffer client requests
-                BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                BufferedReader in = new BufferedReader(
+                    new InputStreamReader(clientSocket.getInputStream()));
                 // PrintWriter sends server response to client
-                PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+                PrintWriter out = new PrintWriter(
+                    clientSocket.getOutputStream(), true);
                 out.println("Server - I got the message");
                 // Print to the console the Clients message
                 while ((inputLine = in.readLine()) != null) {

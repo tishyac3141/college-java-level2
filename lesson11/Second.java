@@ -1,4 +1,11 @@
 package lesson11;
+/**
+ * @author Tishya Chhabra
+ * Date: 11/14/2020
+ * 
+ * A class that keeps track of time and prints out how many seconds
+ * have elapsed every second.
+ */
 
 public class Second implements Runnable {
 

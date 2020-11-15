@@ -1,5 +1,13 @@
 package lesson11;
 
+/**
+ * @author Tishya Chhabra
+ * Date: 11/14/2020
+ * 
+ * A class that keeps track of time and prints out how many minutes
+ * have elapsed every minute.
+ */
+
 public class Minute implements Runnable {
 
     private Thread thread;

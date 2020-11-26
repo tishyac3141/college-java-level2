@@ -24,9 +24,9 @@ public class JLuckySeven extends JPanel implements ActionListener{
     private JFrame frame = new JFrame();
 
     public JLuckySeven(){
-        for(int i = 0; i < values[0].length; i++){
+        for(int i = 0; i < values.length; i++){
             if(i < 3){
-                values[i][0] = values[0].length - i;
+                values[i][0] = values.length - i;
             } else {
                 values[i][0] = i - 2;
             }

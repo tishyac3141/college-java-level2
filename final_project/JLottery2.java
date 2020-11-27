@@ -1,5 +1,10 @@
 package final_project;
 
-public class JLottery2 {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+public class JLottery2 extends JFrame{
+
+    
     
 }

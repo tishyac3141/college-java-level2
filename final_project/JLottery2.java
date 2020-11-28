@@ -14,7 +14,6 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
     private JMenu file = new JMenu("File");
     private JMenuItem about = new JMenuItem("About");
 
-    private String random;
     private final int MAX_SELECTIONS = 6;
     private int numSelected = 0;
     private boolean[] generated = new boolean[30];
@@ -72,21 +71,17 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(submit)) {
-            String sum = "";
-            for (int i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].isSelected())
-                    sum += Integer.toString((i + 1));
+            int numMatching = 0;
+            for(int i = 0; i < generated.length; i++){
+                if(generated[i] && checkboxes[i].isSelected()) numMatching++;  
             }
 
-            for(int i = 0; i < generated.length; i++){
-                if(generated[i]){
-                    
-                }
-            }
+            if(numMatching == 6){
                 JOptionPane.showMessageDialog(null, "Congratulations! The numbers match!");
-             else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Oh no! The numbers do not match!");
             }
+
         } else if(e.getSource().equals(reset)){
             reset();
         } else if(e.getSource() == about){
@@ -97,24 +92,20 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
     }
 
     public void generateRandom() {
-        random = "";
         int tempRandom = 0;
         for (int i = 0; i < 6; i++) {
             if(i == 0){
                 tempRandom = ((int) (Math.random() * 30));
                 generated[tempRandom - 1] = true;
-                random += Integer.toString(tempRandom);
+
             } else {
                 while(generated[tempRandom - 1]){
                     tempRandom = ((int) (Math.random() * 30));
                 }
                 generated[tempRandom - 1] = true;
-                random += Integer.toString(tempRandom);
             }
-            System.out.println("tempRandom = " + tempRandom);
+            //System.out.println("tempRandom = " + tempRandom);
         }
-
-        System.out.println("random = " + random);
     }
 
     public void reset(){

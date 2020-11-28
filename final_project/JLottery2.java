@@ -7,9 +7,12 @@ import java.awt.event.*;
 public class JLottery2 extends JFrame implements ActionListener, ItemListener {
 
     private JCheckBox[] checkboxes = new JCheckBox[30];
-    private JMenuBar menu = new JMenuBar();
     private JButton submit = new JButton("Submit");
     private JButton reset = new JButton("Reset");
+    
+    private JMenuBar menu = new JMenuBar();
+    private JMenu file = new JMenu("File");
+    private JMenuItem about = new JMenuItem("About");
 
     private String random;
     private final int MAX_SELECTIONS = 6;
@@ -21,6 +24,10 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
         setSize(650, 650);
         setLayout(new GridLayout(6, 5));
         setJMenuBar(menu);
+
+        menu.add(file);
+        file.add(about);
+        about.addActionListener(this);
 
         for (int i = 0; i < checkboxes.length; i++) {
             checkboxes[i] = new JCheckBox(Integer.toString(i + 1));
@@ -71,13 +78,20 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
                     sum += Integer.toString((i + 1));
             }
 
-            if (sum.equals(random)) {
+            for(int i = 0; i < generated.length; i++){
+                if(generated[i]){
+                    
+                }
+            }
                 JOptionPane.showMessageDialog(null, "Congratulations! The numbers match!");
-            } else {
+             else {
                 JOptionPane.showMessageDialog(null, "Oh no! The numbers do not match!");
             }
-        } else {
+        } else if(e.getSource().equals(reset)){
             reset();
+        } else if(e.getSource() == about){
+            String info = "\nname: Tishya Chhabra \nCourse Number: CIS263AA\nClass 28649\nMEID:2130581";
+            JOptionPane.showMessageDialog(null, info);
         }
 
     }

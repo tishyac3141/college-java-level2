@@ -28,7 +28,7 @@ public class JCatchTheMouse extends JFrame implements ActionListener {
         resetX();
         setVisible(true);
 
-    }
+    } 
     
     public void resetX(){
         int row = (int)(Math.random()*7);
@@ -54,7 +54,8 @@ public class JCatchTheMouse extends JFrame implements ActionListener {
         if(isCorrect((JButton)(e.getSource()))){
             JOptionPane.showMessageDialog(null, "Nice job! You hit the correct one!");
             double percentage = ((numOfHits/(numOfClicks - 1)) * 100.0);
-            if(numOfHits == 10) JOptionPane.showMessageDialog(null, "Congratulations! You correctly hit 10 with an accuracy of " + percentage + "%.");
+            if(numOfHits == 10) JOptionPane.showMessageDialog(null, "Congratulations! You correctly hit 10 with an accuracy of " + percentage + "%."
+                                                              + "\nname: Tishya Chhabra \nCourse Number: CIS263AA\nClass 28649\nMEID:2130581");
             resetX();
         } else {
             JOptionPane.showMessageDialog(null, "Oh no! You missed! Try again.");

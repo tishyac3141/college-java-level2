@@ -5,9 +5,9 @@ public class Main {
     public static void main(String[] args){
         //JLuckySeven seven = new JLuckySeven();
 
-        //JCatchTheMouse mouse = new JCatchTheMouse();
+        JCatchTheMouse mouse = new JCatchTheMouse();
 
-        JLottery2 lottery = new JLottery2();
+        //JLottery2 lottery = new JLottery2();
     }
     
 }

@@ -9,7 +9,7 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
     private JCheckBox[] checkboxes = new JCheckBox[30];
     private JButton submit = new JButton("Submit");
     private JButton reset = new JButton("Reset");
-    
+
     private JMenuBar menu = new JMenuBar();
     private JMenu file = new JMenu("File");
     private JMenuItem about = new JMenuItem("About");
@@ -72,19 +72,20 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(submit)) {
             int numMatching = 0;
-            for(int i = 0; i < generated.length; i++){
-                if(generated[i] && checkboxes[i].isSelected()) numMatching++;  
+            for (int i = 0; i < generated.length; i++) {
+                if (generated[i] && checkboxes[i].isSelected())
+                    numMatching++;
             }
 
-            if(numMatching == 6){
+            if (numMatching == 6) {
                 JOptionPane.showMessageDialog(null, "Congratulations! The numbers match!");
             } else {
                 JOptionPane.showMessageDialog(null, "Oh no! The numbers do not match!");
             }
 
-        } else if(e.getSource().equals(reset)){
+        } else if (e.getSource().equals(reset)) {
             reset();
-        } else if(e.getSource() == about){
+        } else if (e.getSource() == about) {
             String info = "\nname: Tishya Chhabra \nCourse Number: CIS263AA\nClass 28649\nMEID:2130581";
             JOptionPane.showMessageDialog(null, info);
         }
@@ -94,27 +95,32 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
     public void generateRandom() {
         int tempRandom = 0;
         for (int i = 0; i < 6; i++) {
-            if(i == 0){
+            if (i == 0) {
                 tempRandom = ((int) (Math.random() * 30));
                 generated[tempRandom - 1] = true;
 
             } else {
-                while(generated[tempRandom - 1]){
+                while (generated[tempRandom - 1]) {
                     tempRandom = ((int) (Math.random() * 30));
                 }
                 generated[tempRandom - 1] = true;
             }
-            //System.out.println("tempRandom = " + tempRandom);
+            // System.out.println("tempRandom = " + tempRandom);
         }
     }
 
-    public void reset(){
-        for(int i = 0; i < checkboxes.length; i++){
+    public void reset() {
+        for (int i = 0; i < checkboxes.length; i++) {
             checkboxes[i].setEnabled(true);
             checkboxes[i].setSelected(false);
         }
         numSelected = 0;
         generateRandom();
     }
+
+    public static void main(String[] args){
+        JLottery2 lottery = new JLottery2();
+    }
+ 
 
 }

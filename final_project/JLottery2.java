@@ -9,6 +9,7 @@ import java.awt.event.*;
  * 
  * A fun game of chance! Choose 6 random numbers and see if you win the lottery.
  * Depending on how many numbers match, you'll win a certain amount of money!
+ * There's also an about menu option, where you can find information about the author.
  * 
  * Scroll down to the bottom for the main method to run it!
  */

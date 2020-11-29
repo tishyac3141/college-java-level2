@@ -5,7 +5,16 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * @author Tishya Chhabra Date: 11/25/2020
+ * @author Tishya Chhabra 
+ * Date: 11/25/2020
+ * 
+ * A java implementation of a popular card game! play against the computer and try
+ * to click on the correct combination of buttons to successfully get rid of all of them!
+ * 
+ * Scroll down to the bottom to find the main() method and run the code.
+ * 
+ * basic logic: there is an array that keeps track of the button's values as well as
+ * whether that value has already been picked or not (with either a 1 or 0)
  * 
  */
 
@@ -15,7 +24,7 @@ public class JLuckySeven extends JPanel implements ActionListener {
 
     private int[][] values = new int[7][2];
     private JButton[] buttons = new JButton[7];
-    
+
     private JButton needToPress;
     private boolean press = false;
 
@@ -56,6 +65,7 @@ public class JLuckySeven extends JPanel implements ActionListener {
         frame.setVisible(true);
     }
 
+    //in here, the buttons are removed, or all of them are put back on if the game is reset
     public void paintComponent(Graphics g) {
 
         if (isReset) {
@@ -77,14 +87,18 @@ public class JLuckySeven extends JPanel implements ActionListener {
             }
         }
         tally.setText("Number of games won: " + wins + "   Number of games lost: " + losses);
-        
+
         frame.setVisible(true);
         this.setVisible(true);
     }
 
+    //resets everything + shows the information about the author
     public void reset() {
         press = false;
         needToPress = null;
+
+        JOptionPane.showMessageDialog(null,
+                "Name: Tishya Chhabra \nCourse Number: CIS263AA\nClass 28649\nMEID: 2130581");
 
         for (int i = 0; i < values.length; i++) {
             buttons[i].setText(Integer.toString(i + 1));
@@ -95,7 +109,8 @@ public class JLuckySeven extends JPanel implements ActionListener {
         repaint();
     }
 
-    public void correctOrIncorrect(int value){
+    //checks whether or not the user clicked a button who's position had already been drawn
+    public void correctOrIncorrect(int value) {
         JOptionPane.showMessageDialog(null, "The value is: " + value);
         if (values[value - 1][1] == 1) {
             JOptionPane.showMessageDialog(null, "You lost!");
@@ -118,7 +133,8 @@ public class JLuckySeven extends JPanel implements ActionListener {
         }
     }
 
-    public int getValue(Object pressed){
+    //gets the value of that button
+    public int getValue(Object pressed) {
         int value = 0;
         for (int i = 0; i < buttons.length; i++) {
             if (pressed.equals(buttons[i])) {
@@ -132,17 +148,18 @@ public class JLuckySeven extends JPanel implements ActionListener {
         return value;
     }
 
+    //called when a button is pressed
     public void actionPerformed(ActionEvent e) {
         Object pressed = e.getSource();
         int value = 0;
 
-        if(numPressed == 7){
+        if (numPressed == 7) {
             JOptionPane.showMessageDialog(null, "You won!");
             wins++;
         }
 
-        if(press){
-            if(pressed.equals(needToPress)){
+        if (press) {
+            if (pressed.equals(needToPress)) {
                 value = getValue(pressed);
                 correctOrIncorrect(value);
 
@@ -156,11 +173,11 @@ public class JLuckySeven extends JPanel implements ActionListener {
             value = getValue(pressed);
             correctOrIncorrect(value);
             numPressed++;
-        }   
-     
+        }
+
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         JLuckySeven seven = new JLuckySeven();
     }
 

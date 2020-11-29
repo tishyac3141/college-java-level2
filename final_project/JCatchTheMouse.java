@@ -99,8 +99,7 @@ public class JCatchTheMouse extends JFrame implements ActionListener {
                 String totalTime = getTimeStamp();
                 
                 JOptionPane.showMessageDialog(null,
-                        "Congratulations! You correctly hit 10 with an accuracy of " + String.format("%.2f", percentage) + "% in " + totalTime 
-                                + "\nName: Tishya Chhabra \nCourse Number: CIS263AA\nClass 28649\nMEID: 2130581");
+                        "Congratulations! You correctly hit 10 with an accuracy of " + String.format("%.2f", percentage) + "% in " + totalTime);
 
                 //resetting the timestamp in case they want to try again
                 startInSeconds = (LocalTime.now().getMinute() * 60) + LocalTime.now().getSecond();

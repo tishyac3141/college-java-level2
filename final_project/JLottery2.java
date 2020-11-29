@@ -5,7 +5,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * @author: Tishya Chhabra Date: 11/27/2020
+ * @author: Tishya Chhabra 
+ * Date: 11/27/2020
  * 
  * A fun game of chance! Choose 6 random numbers and see if you win the lottery.
  * Depending on how many numbers match, you'll win a certain amount of money!
@@ -124,7 +125,7 @@ public class JLottery2 extends JFrame implements ActionListener, ItemListener {
         } else if (e.getSource().equals(reset)) {
             reset();
         } else if (e.getSource() == about) {
-            String info = "\nname: Tishya Chhabra \nCourse Number: CIS263AA\nClass 28649\nMEID:2130581";
+            String info = "\nname: Tishya Chhabra";
             JOptionPane.showMessageDialog(null, info);
         }
 

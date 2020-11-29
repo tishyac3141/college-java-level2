@@ -6,6 +6,7 @@ import java.awt.event.*;
 
 /**
  * @author Tishya Chhabra 
+
  * Date: 11/25/2020
  * 
  * A java implementation of a popular card game! play against the computer and try
@@ -96,9 +97,6 @@ public class JLuckySeven extends JPanel implements ActionListener {
     public void reset() {
         press = false;
         needToPress = null;
-
-        JOptionPane.showMessageDialog(null,
-                "Name: Tishya Chhabra \nCourse Number: CIS263AA\nClass 28649\nMEID: 2130581");
 
         for (int i = 0; i < values.length; i++) {
             buttons[i].setText(Integer.toString(i + 1));
